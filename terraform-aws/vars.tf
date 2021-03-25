@@ -9,8 +9,22 @@ variable "amis" {
 }
 
 variable "cdirs_remote_acess"  {
-
-    type = "list"
-    default = ["138.122.83.3/32","139.122.83.3/32"]
+    type = list(string)
+    default = [
+    "138.122.83.3/32",
+    "139.122.83.3/32"
+    ]
   
 }
+
+variable "key_name_us" {
+  type = string
+  default = "terraform-aws"
+  
+}
+
+variable "key_name_sa" {
+  type=string
+  default = "terraform-aws.pub"
+}
+

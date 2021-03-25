@@ -1,3 +1,5 @@
+
+
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow SSH inbound "
@@ -8,7 +10,7 @@ resource "aws_security_group" "allow_ssh" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.cdirs_remote_acess]
+    cidr_blocks = var.cdirs_remote_acess
   }
 
 
@@ -23,11 +25,12 @@ resource "aws_security_group" "allow_ssh-us-east-2" {
   description = "Allow SSH inbound to us-east-2 instances "
 
   ingress {
+
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.cdirs_remote_acess]
+    cidr_blocks = var.cdirs_remote_acess
   }
 
 

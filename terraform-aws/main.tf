@@ -7,11 +7,13 @@ provider "aws"{
     region = "us-east-2"
 }
 
+# South east 1 instances
+# Sao Paulo / Brazil
 resource "aws_instance" "dev" {
     count = 3
     ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "terraform-aws.pub"
+    key_name = var.key_name_sa
     tags = {
     Name = "dev${count.index}"
  }
@@ -21,7 +23,7 @@ resource "aws_instance" "dev" {
 resource "aws_instance" "dev4" {
     ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "terraform-aws.pub"
+    key_name = var.key_name_sa
     tags = {
     Name = "dev4"
  }
@@ -33,7 +35,7 @@ resource "aws_instance" "dev5" {
     provider = aws.us-east-2
     ami = var.amis["us-east-2"]
     instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    key_name = var.key_name_us
     tags = {
     Name = "dev5"
  }
@@ -47,7 +49,7 @@ resource "aws_instance" "dev6" {
     provider = aws.us-east-2
     ami = var.amis["us-east-2"]
     instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    key_name = var.key_name_us
     tags = {
     Name = "dev6"
 
